@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { cols, rows } from 'src/app/constants';
+import { cols, getTiles, rows } from 'src/app/constants';
 import { Grid, ICell, Row, RowIndex } from 'src/app/contracts';
+import { removeRandomItem } from 'src/app/helpers';
 
 @Component({
     selector: 'app-player',
@@ -24,8 +25,14 @@ export class PlayerComponent {
     }
 
     private generateGrid(): Grid {
+        const items = getTiles();
+        const itemKeys = Object.keys(items);
+
         return rows.map(rowIndex => cols
-            .map<ICell>(col => ({row: rowIndex, col}))
+            .map<ICell>(col => {
+                const item = removeRandomItem(itemKeys);
+                return { row: rowIndex, col, value: item, display: items[item]};
+            })
             .reduce((row, cell) => ({...row, [cell.col]: cell}), {} as Row)
         ).reduce((grid, row) => ({...grid, [row[0].row]: row}), {} as Grid);
     }
