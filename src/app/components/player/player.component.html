@@ -1,0 +1,8 @@
+
+<div>
+    <div *ngFor="let row of rows">
+        <span *ngFor="let cell of getCells(row)">
+            Cell: {{cell.row}} {{cell.col}}
+        </span>
+    </div>
+</div>
