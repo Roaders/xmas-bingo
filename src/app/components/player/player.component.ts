@@ -24,6 +24,10 @@ export class PlayerComponent {
         return Object.values(row);
     }
 
+    public getSource(cell: ICell): string{
+        return `assets/squares/${cell.value}.png`;
+    }
+
     private generateGrid(): Grid {
         const items = getTiles();
         const itemKeys = Object.keys(items);

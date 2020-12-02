@@ -1,8 +1,13 @@
 
-<div class="d-flex flex-wrap justify-content-center pt-5">
-    <div class="d-flex" *ngFor="let row of rows">
-        <div class="d-inline-flex cell align-items-center justify-content-center border" *ngFor="let cell of getCells(row)">
-            {{cell.display}}
+<div class="d-flex justify-content-center pt-5">
+    <div>
+        <div class="d-flex" *ngFor="let row of rows">
+            <div class="d-inline-flex cell border flex-column" *ngFor="let cell of getCells(row)">
+                <div class="d-flex justify-content-center align-items-center flex-grow-1 image-container">
+                    <img class="mw-100 mh-100 cell-image" [src]="getSource(cell)" />
+                </div>
+                <div class="text-center">{{cell.display}}</div>
+            </div>
         </div>
     </div>
 </div>
