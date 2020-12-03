@@ -9,7 +9,7 @@
 
             <h3>Called</h3>
 
-            <div *ngFor="let previousImage of previousCards" class="pt-3">
+            <div *ngFor="let previousImage of previousCards" class="d-flex justify-content-center align-items-center image-container mt-3 solid-cell previous-card">
                 <img class="mw-100 mh-100 cell-image" [src]="getCardSource(previousImage)" />
             </div>
 
@@ -20,7 +20,7 @@
                 <button type="button" class="btn btn-primary" (click)="draw()" [disabled]="!canDraw">Draw</button>
             </div>
 
-            <div class="d-flex justify-content-center align-items-center image-container">
+            <div class="d-flex justify-content-center align-items-center image-container solid-cell mt-3">
                 <img *ngIf="currentCard != null" class="mw-100 mh-100 cell-image" [src]="getCardSource(currentCard)" />
 
                 <h1 *ngIf="currentCard == null && cardsLoaded" class="display-1 text-center">Draw first card...</h1>

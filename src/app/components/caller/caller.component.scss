@@ -3,6 +3,13 @@
     height: 800px;
 }
 
+$previousSize: 250px;
+
 .previous-container{
-    width: 250px;
+    width: $previousSize;
+}
+
+.previous-card {
+    width: $previousSize;
+    height: $previousSize;
 }

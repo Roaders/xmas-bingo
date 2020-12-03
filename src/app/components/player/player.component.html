@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="d-flex" *ngFor="let row of getRows(previousGrid)">
-                    <div class="d-inline-flex small-cell border flex-column" *ngFor="let cell of getCells(row)">
+                    <div class="d-inline-flex small-cell solid-cell border flex-column" *ngFor="let cell of getCells(row)">
 
                         <div *ngIf="cell.dobbed" class="splotch-container small-cell d-flex justify-content-center align-items-center">
                             <fa-icon [icon]="faSplotch"></fa-icon>
@@ -44,7 +44,7 @@
                 <div class="d-flex" *ngFor="let row of getRows(grid)">
                     <div 
                         (click)="dobCell(cell)" 
-                        class="d-inline-flex cell border flex-column" 
+                        class="d-inline-flex cell solid-cell border flex-column" 
                         *ngFor="let cell of getCells(row)"
                         >
 
