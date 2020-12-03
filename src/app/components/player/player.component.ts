@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { cols, gameTiles, rows } from 'src/app/constants';
 import { Grid, ICell, Row } from 'src/app/contracts';
 import { removeRandomItem } from 'src/app/helpers';
-import { compareGrid } from 'src/app/helpers/grid.helper';
+import { compareGrid, reduceGrid } from 'src/app/helpers/grid.helper';
 import { getSource } from 'src/app/helpers/image.helper';
+import { faSplotch, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-player',
@@ -11,6 +12,9 @@ import { getSource } from 'src/app/helpers/image.helper';
     styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent {
+
+    public readonly faSplotch = faSplotch;
+    public readonly faCheck = faCheck;
 
     private _grids: Grid[] = [this.generateGrid()];
 
@@ -22,6 +26,10 @@ export class PlayerComponent {
         return this._grids[0];
     }
 
+    public getBingo(grid: Grid): boolean{
+        return reduceGrid(grid).every(cell => cell.dobbed);
+    }
+
     public newGrid(): void{
 
         let newGrid: Grid = this.generateGrid();
@@ -31,6 +39,10 @@ export class PlayerComponent {
         }
 
         this._grids.unshift(newGrid);
+    }
+
+    public dobCell(cell: ICell): void{
+        cell.dobbed = true;
     }
 
     public getRows(grid: Grid): Row[] {
@@ -51,7 +63,7 @@ export class PlayerComponent {
         return rows.map(rowIndex => cols
             .map<ICell>(col => {
                 const item = removeRandomItem(itemKeys);
-                return { row: rowIndex, col, value: item, display: gameTiles[item]};
+                return { row: rowIndex, col, value: item, display: gameTiles[item], dobbed: false};
             })
             .reduce((row, cell) => [...row, cell], new Array<ICell>())
         ).reduce((grid, row) => [...grid, row], new Array<ICell[]>()) as Grid;

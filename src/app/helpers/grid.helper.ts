@@ -5,6 +5,6 @@ export function compareGrid(one: Grid, two: Grid): boolean{
     return reduceGrid(one).map(cell => cell.value).every(value => comparisonValues.includes(value));
 }
 
-function reduceGrid(grid: Grid): ICell[]{
+export function reduceGrid(grid: Grid): ICell[]{
     return grid.reduce((cells, row) => [...cells, ...row], new Array<ICell>());
 }

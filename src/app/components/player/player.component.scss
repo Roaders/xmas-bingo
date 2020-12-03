@@ -1,17 +1,48 @@
 
+$large-cell-size: 200px;
 $small-cell-size: 50px;
 
-.cell{
-    width: 200px;
-    height: 200px;
+.cell {
+    width: $large-cell-size;
+    height: $large-cell-size;
+    cursor: pointer;
 }
 
-.small-cell{
+.small-cell {
     width: $small-cell-size;
     height: $small-cell-size;
 }
 
-.previous-container{
+.previous-container {
     width: $small-cell-size * 5;
 }
 
+.ng-fa-icon{
+    color: green;
+}
+
+.splotch-container {
+    position: absolute;
+
+    .ng-fa-icon {
+        font-size: 120px;
+    }
+}
+
+.bingo-container, .bingo-container-small {
+    position: absolute;
+}
+
+.bingo-container {
+    width: $large-cell-size * 4;
+    height: $large-cell-size * 4;
+}
+
+.bingo-container-small {
+    width: $small-cell-size * 4;
+    height: $small-cell-size * 4;
+}
+
+.previous-container .ng-fa-icon{
+    font-size: 30px;
+}
