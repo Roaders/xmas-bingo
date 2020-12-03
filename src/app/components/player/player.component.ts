@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { cols, getTiles, rows } from 'src/app/constants';
+import { cols, gameTiles, rows } from 'src/app/constants';
 import { Grid, ICell, Row } from 'src/app/contracts';
 import { removeRandomItem } from 'src/app/helpers';
 import { compareGrid } from 'src/app/helpers/grid.helper';
+import { getSource } from 'src/app/helpers/image.helper';
 
 @Component({
     selector: 'app-player',
@@ -40,18 +41,17 @@ export class PlayerComponent {
         return Object.values(row);
     }
 
-    public getSource(cell: ICell): string{
-        return `assets/squares/${cell.value}.png`;
+    public getCellSource(cell: ICell): string{
+        return getSource(cell.value);
     }
 
     private generateGrid(): Grid {
-        const items = getTiles();
-        const itemKeys = Object.keys(items);
+        const itemKeys = Object.keys(gameTiles);
 
         return rows.map(rowIndex => cols
             .map<ICell>(col => {
                 const item = removeRandomItem(itemKeys);
-                return { row: rowIndex, col, value: item, display: items[item]};
+                return { row: rowIndex, col, value: item, display: gameTiles[item]};
             })
             .reduce((row, cell) => [...row, cell], new Array<ICell>())
         ).reduce((grid, row) => [...grid, row], new Array<ICell[]>()) as Grid;

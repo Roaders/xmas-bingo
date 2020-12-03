@@ -1,1 +1,34 @@
-<p>caller works!</p>
+
+
+<div class="h-100 flex-column d-flex align-items-center">
+
+    <h1 class="display-1">Xmas Bingo!</h1>
+
+    <div class="d-flex justify-content-center pt-5 flex-grow-1 grid-container">
+        <div class="pr-4 mr-4  overflow-auto previous-container">
+
+            <h3>Called</h3>
+
+            <div *ngFor="let previousImage of previousCards" class="pt-3">
+                <img class="mw-100 mh-100 cell-image" [src]="getCardSource(previousImage)" />
+            </div>
+
+        </div>
+        <div>
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-primary" (click)="newGame()">New Game</button>
+                <button type="button" class="btn btn-primary" (click)="draw()" [disabled]="gameOver">Draw</button>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center image-container">
+                <img *ngIf="currentCard != null" class="mw-100 mh-100 cell-image" [src]="getCardSource(currentCard)" />
+
+                <h1 *ngIf="currentCard == null" class="display-1 text-center">Draw first card...</h1>
+            </div>
+
+            <div *ngIf="currentCard != null" class="d-flex justify-content-center">
+                <h1>{{getCardDisplay(currentCard)}}</h1>
+            </div>
+        </div>
+    </div>
+</div>

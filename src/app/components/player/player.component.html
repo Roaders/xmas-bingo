@@ -5,15 +5,15 @@
     <h1 class="display-1">Xmas Bingo!</h1>
 
     <div class="d-flex justify-content-center pt-5 flex-grow-1 grid-container">
-        <div class="pr-4 overflow-auto previous-container">
+        <div class="pr-4 mr-4 overflow-auto previous-container">
 
-            <h3 [ngClass]="{'d-none': previousGrids.length == 0}">Previous Cards</h3>
+            <h3>Previous Cards</h3>
 
             <div *ngFor="let previousGrid of previousGrids" class="pt-3">
                 <div class="d-flex" *ngFor="let row of getRows(previousGrid)">
                     <div class="d-inline-flex small-cell border flex-column" *ngFor="let cell of getCells(row)">
                         <div class="d-flex justify-content-center align-items-center flex-grow-1 image-container">
-                            <img class="mw-100 mh-100 cell-image" [src]="getSource(cell)" />
+                            <img class="mw-100 mh-100 cell-image" [src]="getCellSource(cell)" />
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
             <div class="d-flex pt-3" *ngFor="let row of getRows(grid)">
                 <div class="d-inline-flex cell border flex-column" *ngFor="let cell of getCells(row)">
                     <div class="d-flex justify-content-center align-items-center flex-grow-1 image-container">
-                        <img class="mw-100 mh-100 cell-image" [src]="getSource(cell)" />
+                        <img class="mw-100 mh-100 cell-image" [src]="getCellSource(cell)" />
                     </div>
                     <div class="text-center">{{cell.display}}</div>
                 </div>

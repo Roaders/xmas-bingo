@@ -11,3 +11,14 @@ h1, h2, h3, h4, h5 {
 }
 
 @import "~bootstrap/scss/bootstrap";
+
+
+.image-container, .grid-container {
+    min-height: 0;
+}
+
+.cell-image {
+    object-fit: contain;
+    width: auto;
+    height: auto;
+}

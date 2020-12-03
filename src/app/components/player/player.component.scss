@@ -15,12 +15,3 @@ $small-cell-size: 50px;
     width: $small-cell-size * 5;
 }
 
-.image-container, .grid-container {
-    min-height: 0;
-}
-
-.cell-image {
-    object-fit: contain;
-    width: auto;
-    height: auto;
-}
