@@ -16,18 +16,23 @@
         </div>
         <div>
             <div class="d-flex justify-content-between">
-                <button type="button" class="btn btn-primary" (click)="newGame()">New Game</button>
-                <button type="button" class="btn btn-primary" (click)="draw()" [disabled]="gameOver">Draw</button>
+                <button type="button" class="btn btn-primary" (click)="newGame()" [disabled]="!cardsLoaded">New Game</button>
+                <button type="button" class="btn btn-primary" (click)="draw()" [disabled]="!canDraw">Draw</button>
             </div>
 
             <div class="d-flex justify-content-center align-items-center image-container">
                 <img *ngIf="currentCard != null" class="mw-100 mh-100 cell-image" [src]="getCardSource(currentCard)" />
 
-                <h1 *ngIf="currentCard == null" class="display-1 text-center">Draw first card...</h1>
+                <h1 *ngIf="currentCard == null && cardsLoaded" class="display-1 text-center">Draw first card...</h1>
+                <h1 *ngIf="currentCard == null && !cardsLoaded" class="display-1 text-center">Feeding Reindeer...</h1>
             </div>
 
-            <div *ngIf="currentCard != null" class="d-flex justify-content-center">
+            <div *ngIf="currentCard != null && !drawing" class="d-flex justify-content-center">
                 <h1>{{getCardDisplay(currentCard)}}</h1>
+            </div>
+
+            <div *ngIf="drawing" class="d-flex justify-content-center">
+                <h1>Wait for it...</h1>
             </div>
         </div>
     </div>
