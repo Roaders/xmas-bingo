@@ -10,5 +10,5 @@ export interface ICell{
     display: string;
 }
 
-export type Row = Record<ColIndex, ICell>;
-export type Grid = Record<RowIndex, Row>;
+export type Row = [ICell, ICell, ICell, ICell];
+export type Grid = [Row, Row, Row, Row];
