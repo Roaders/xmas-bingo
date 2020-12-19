@@ -5,9 +5,11 @@
         "clean": "rimraf dist",
         "prebuild": "npm run clean",
         "start": "ng serve --open",
-        "build": "ng build --prod",
+        "build": "ng build",
         "test": "ng test",
-        "lint": "ng lint"
+        "lint": "ng lint",
+        "prebuild-prod": "npm run clean",
+        "build-prod": "ng build --prod --base-href /xmas-bingo/"
     },
     "private": true,
     "dependencies": {
